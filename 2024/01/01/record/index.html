@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="杂项" />
+    <meta name="hexo-theme-A4" content="v1.8.8" />
+    <link rel="alternate icon" type="image/webp" href="/images/Neurothingy.jpg">
+    <title>Wuffaa | Blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery.min.css">
+
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    
+    <body>
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <img style="
+        width: 56px;
+        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/images/Neurothingy.jpg" width="10%"></img>
+        <div class="header-content">
+            <a class="logo" href="/">Wuffaa</a> 
+            <span class="description">el psy congroo</span> 
+        </div>
+        
+    </div>
+    
+   
+    <ul class="nav">
+        
+            
+                <li><a href="/">首页</a></li>
+            
+        
+            
+                <li><a href="/list/">文章</a></li>
+            
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+
+    
+        <div class="post-main-title">
+            杂项
+        </div>
+      
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#C"><span class="post-toc-text">C</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%BB%88%E7%AB%AFI-O"><span class="post-toc-text">终端I&#x2F;O</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%99%9A%E6%8B%9F%E5%8C%96"><span class="post-toc-text">虚拟化</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Kernel"><span class="post-toc-text">Kernel</span></a></li></ol>
+            
+        
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">typeof(<span class="type">int</span> [<span class="number">5</span>])  a;  =&gt; <span class="type">int</span> a[<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> b[<span class="number">5</span>];   __auto_type a = b; =&gt; <span class="type">int</span> a[<span class="number">5</span>] = b;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="变参宏"><a href="#变参宏" class="headerlink" title="变参宏"></a>变参宏</h2><p><code>__VA_ARGS__</code> 会直接用<code>...</code>中的内容进行替换，因此需要对应至少一个参数，或者<code>__VA_ARGS__</code>前&#x2F;后面加个””，避免空参数，因为函数入参逗号后面一定要有元素。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MY_LOG(fmt, ...)	log(fmt, __VA_ARGS__)	<span class="comment">//至少有一个变参</span></span></span><br></pre></td></tr></table></figure>
+
+<p> <code>##__VA_ARGS__</code> 可以对应至少0个参数，但前面至少有一个固定的参数。 当<code>##__VA_ARGS__</code>对应为空时，编译器在预处理时会删除前面的逗号，避免编译错误。如果前面没有固定参数，就没有逗号删除，会导致编译错误。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MY_LOG(fmt, ...)	log(fmt, ##__VA_ARGS__)	<span class="comment">//可以没有变参，但必须有fmt参数</span></span></span><br></pre></td></tr></table></figure>
+
+<p>有一种实现方法可以解决上述限制，使其变参数可以为0且不需要前面必须有固定参数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> FMT(fmt, ...)		fmt <span class="string">&quot;%0.s&quot;</span>, __VA_ARGS__ <span class="string">&quot;&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FMT_HEAD(fmt, ...)	fmt</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FMT_TAIL(fmt, ...)	__VA_ARGS__</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MY_LOG(...)	log(FMT(FMT_HEAD(__VA_ARGS__,), FMT_TAIL(__VA_ARGS__,)))</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="memory-order"><a href="#memory-order" class="headerlink" title="memory order"></a>memory order</h2><ul>
+<li>sequentially-consistent(load&#x2F;store)：最强内存序，不允许有任何跨越该变量的重排序。（读写屏障）</li>
+<li>release(store)&#x2F;acquire(load)：线程A执行release之前所有的write操作不能被重排序到该操作后面；线程B执行acquire，且获取到的值是线程A release之后的值，此时可以保证线程A在release之前的所有write操作对线程B可见。（写屏障）</li>
+<li>release(store)&#x2F;consume(load)：与上面不同的是仅限制了release之前与该变量相关的write操作不被重排序。（相关写屏障）</li>
+<li>relaxed(load&#x2F;store)：没有任何的同步&#x2F;排序的约束，仅保证操作的原子性。（无屏障）</li>
+</ul>
+<h2 id="memory-model"><a href="#memory-model" class="headerlink" title="memory model"></a>memory model</h2><ul>
+<li>Total Store Order(x86)：每个core都有一个FIFO的写缓冲，会产生StoreLoad乱序。</li>
+</ul>
+<p><a href="C:\Users\www60\Desktop\mem-tso.png" title="x86-tso" class="gallery-item" style="box-shadow: none;"> <img src="C:\Users\www60\Desktop\mem-tso.png" alt="x86-tso"></a></p>
+<ul>
+<li>Weak(arm&#x2F;power)：每个core都有自己的缓存，用于存储该core上读写的复制，并以一定顺序（可能被重排序）向其他core发送写同步，这不仅会产生StoreLoad乱序，还会产生StoreStore乱序。</li>
+</ul>
+<p><a href="C:\Users\www60\Desktop\mem-weak.png" title="risc-relaxed" class="gallery-item" style="box-shadow: none;"> <img src="C:\Users\www60\Desktop\mem-weak.png" alt="risc-relaxed"></a></p>
+<h2 id="Duff’s-device"><a href="#Duff’s-device" class="headerlink" title="Duff’s device"></a>Duff’s device</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">send</span><span class="params">( <span class="type">int</span> * to, <span class="type">int</span> * from, <span class="type">int</span> count)</span> &#123;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">		*to++ = *from++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">send</span><span class="params">( <span class="type">int</span> * to, <span class="type">int</span> * from, <span class="type">int</span> count)</span> &#123;</span><br><span class="line">    <span class="type">int</span> n = (count + <span class="number">7</span> ) / <span class="number">8</span>;</span><br><span class="line">    <span class="keyword">switch</span> (count % <span class="number">8</span> ) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">0</span> :    <span class="keyword">do</span> &#123; * to ++ = * from ++ ;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">7</span> :          * to ++ = * from ++ ;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">6</span> :          * to ++ = * from ++ ;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">5</span> :          * to ++ = * from ++ ;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">4</span> :          * to ++ = * from ++ ;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">3</span> :          * to ++ = * from ++ ;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">2</span> :          * to ++ = * from ++ ;</span><br><span class="line">    <span class="keyword">case</span> <span class="number">1</span> :          * to ++ = * from ++ ;</span><br><span class="line">           &#125; <span class="keyword">while</span> (--n &gt; <span class="number">0</span>);</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="字节序与比特序"><a href="#字节序与比特序" class="headerlink" title="字节序与比特序"></a>字节序与比特序</h2><p>字节序和比特序一般是一致的：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span> <span class="title function_">is_big_endian</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">union</span> &#123;</span></span><br><span class="line">        <span class="type">uint32_t</span> i;</span><br><span class="line">        <span class="type">char</span> c[<span class="number">4</span>];</span><br><span class="line">    &#125; bint = &#123;<span class="number">0x01020304</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> bint.c[<span class="number">0</span>] == <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">bool</span> <span class="title function_">is_big_bit_order</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">union</span> &#123;</span></span><br><span class="line">        <span class="type">uint8_t</span> i;</span><br><span class="line">        <span class="class"><span class="keyword">struct</span>&#123;</span></span><br><span class="line">            <span class="type">uint8_t</span> low:<span class="number">1</span>;</span><br><span class="line">            <span class="type">uint8_t</span> middle:<span class="number">6</span>;</span><br><span class="line">            <span class="type">uint8_t</span> high:<span class="number">1</span>;  </span><br><span class="line">        &#125;;</span><br><span class="line">    &#125; bint = &#123;<span class="number">0x1</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> bint.high == <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="终端I-O"><a href="#终端I-O" class="headerlink" title="终端I&#x2F;O"></a>终端I&#x2F;O</h1><p><code>setbuf(stdin,NULL)</code>并不会使得终端在输入一个字符之后程序立马能收到，因为输入缓冲区不仅程序本身有，终端驱动也有。想要达到效果需要对终端进行配置。</p>
+<p>终端I&#x2F;O有两种不同的工作模式：</p>
+<ul>
+<li>规范模式：在这种模式中，对终端输入以行为单位进行处理。对于每个读请求，终端驱动程序最多返回一行。</li>
+<li>非规范模式：输入字符不装配成行。</li>
+</ul>
+<h1 id="虚拟化"><a href="#虚拟化" class="headerlink" title="虚拟化"></a>虚拟化</h1><p>kvm大页内存可以分配给虚拟机内存，而不考虑Guest OS是否使用。如果Guest OS不使用大页内存，则它值会识别小页。反过来，如果Guest OS计划使用大页内存，则一定要给虚拟机分配大页内存。否则虚拟机的性能将不及预期。</p>
+<h1 id="Kernel"><a href="#Kernel" class="headerlink" title="Kernel"></a>Kernel</h1><p>用户态采用抢占式调度；内核态在Linux 2.6版本之前只支持非抢占式调度，2.6开始支持抢占式调度。</p>
+</div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2024-01-01</span>
+            
+            
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    <!-- <div class="post-footer-pre-next">
+        <span>上一篇：<a href=""></a></span>
+        <span class="post-footer-pre-next-last-span-right">上一篇：<a href=""></a></span>
+    </div> -->
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+    
+</div>
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>看过大海的人不会忘记海的广阔</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery.min.js"></script>
+
+
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+
+
+</html>
