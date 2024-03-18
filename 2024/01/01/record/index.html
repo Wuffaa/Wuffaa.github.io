@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="杂项" />
+    <meta name="description" content="记录" />
     <meta name="hexo-theme-A4" content="v1.8.8" />
     <link rel="alternate icon" type="image/webp" href="/images/Neurothingy.jpg">
     <title>Wuffaa | Blog</title>
@@ -115,7 +115,7 @@
 
     
         <div class="post-main-title">
-            杂项
+            记录
         </div>
       
     
@@ -123,7 +123,7 @@
     <div class="post-md">
         
             
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#C"><span class="post-toc-text">C</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%BB%88%E7%AB%AFI-O"><span class="post-toc-text">终端I&#x2F;O</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%99%9A%E6%8B%9F%E5%8C%96"><span class="post-toc-text">虚拟化</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Kernel"><span class="post-toc-text">Kernel</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#C"><span class="post-toc-text">C</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SHELL"><span class="post-toc-text">SHELL</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Git"><span class="post-toc-text">Git</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%BB%88%E7%AB%AFI-O"><span class="post-toc-text">终端I&#x2F;O</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%99%9A%E6%8B%9F%E5%8C%96"><span class="post-toc-text">虚拟化</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Kernel"><span class="post-toc-text">Kernel</span></a></li></ol>
             
         
         <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">typeof(<span class="type">int</span> [<span class="number">5</span>])  a;  =&gt; <span class="type">int</span> a[<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> b[<span class="number">5</span>];   __auto_type a = b; =&gt; <span class="type">int</span> a[<span class="number">5</span>] = b;</span><br></pre></td></tr></table></figure>
@@ -164,6 +164,67 @@
 
 
 
+<h1 id="SHELL"><a href="#SHELL" class="headerlink" title="SHELL"></a>SHELL</h1><ul>
+<li><p><code>cd - </code> ：在当前目录和上个目录跳转</p>
+</li>
+<li><p><code>tee</code>：将输入写入文件并输出到标准输出</p>
+</li>
+<li><p><code>&quot; &quot;</code>：翻译变量</p>
+</li>
+<li><p><code>&#39; &#39;</code>：不翻译变量</p>
+</li>
+<li><p><code>$0</code>：程序名（执行脚本时为脚本文件名，在shell中直接用<code>$0</code>时显示的是<code>-bash</code>）</p>
+</li>
+<li><p><code>source script.sh</code>：在当前会话中执行脚本</p>
+</li>
+<li><p><code>./script.sh</code>：创建一个新会话执行该脚本</p>
+</li>
+<li><p><code>$?</code>：获取上一个命令的返回值</p>
+</li>
+<li><p><code>$_</code>：获取上一个命令的最后一个参数</p>
+</li>
+<li><p><code>$#</code>：参数个数</p>
+</li>
+<li><p><code>$$</code>：进程id</p>
+</li>
+<li><p><code>$@</code>：所有参数数组</p>
+</li>
+<li><p><code>!!</code>：表示上一次输入的命令</p>
+</li>
+<li><p><code>$(cmd)</code>和`cmd` ：表示命令替换。执行命令，并将结果替换进去，例如<code>echo $(date)</code></p>
+</li>
+<li><p><code>#!/usr/bin/env python</code>：增强了通用性，其中<code>#!</code>叫做shebang</p>
+</li>
+<li><p><code>SIGHUP</code>在会话退出时发送，默认行为为退出该会话执行的程序，<code>nohup</code>命令可以忽略该信号，使得退出窗口后继续运行</p>
+</li>
+<li><p>使用管道时不支持标准输入的命令可以使用<code>xargs</code>作为命令的输入参数</p>
+</li>
+<li><p>命令后面的内容如果不想被解释为参数，需要在内容前面加上<code>--</code></p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">touch</span> -- -i <span class="comment">#创建名为&#x27;-i&#x27;的文件</span></span><br><span class="line"><span class="built_in">rm</span> -- -i    <span class="comment">#删除名为&#x27;-i&#x27;的文件</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#下面伪代码中，带type的为对象，不带type的为实例</span><br><span class="line"></span><br><span class="line">#块</span><br><span class="line">type blob = array&lt;byte&gt;</span><br><span class="line">#目录树</span><br><span class="line">type tree = map&lt;string, tree/blob&gt;</span><br><span class="line">#提交</span><br><span class="line">type commit = struct &#123;</span><br><span class="line">	parents: array&lt;commit&gt;</span><br><span class="line">	author: string</span><br><span class="line">	message: string</span><br><span class="line">	snapshot: tree(root)</span><br><span class="line">&#125; </span><br><span class="line">#git中的对象</span><br><span class="line">type object = blob/tree/commit</span><br><span class="line"></span><br><span class="line">objects = map&lt;hash_id, object&gt;</span><br><span class="line"></span><br><span class="line">def store(o)</span><br><span class="line">	id = sha_1(o)</span><br><span class="line">	objects[id] = o</span><br><span class="line"></span><br><span class="line">def load(id)</span><br><span class="line">	return objects[id]</span><br><span class="line"></span><br><span class="line">reference = map&lt;branch_name, hash_id&gt;</span><br></pre></td></tr></table></figure>
+
+<p>git将commit作为节点抽象成一个DAG图，用于版本管理</p>
+<p>master为一个reference，指示主线最新的commit</p>
+<p>HEAD为一个特殊的reference，指示当前git所处的commit位置</p>
+<ul>
+<li><p><code>git add</code>：将object添加到暂存区</p>
+</li>
+<li><p><code>git commit</code>：将暂存区的object合并成一个commit并store</p>
+</li>
+<li><p><code>git branch</code>：查看分支</p>
+</li>
+<li><p><code>git branch branch_name</code>：新建一个reference指向当前commit，该reference可视为为一个新的分支</p>
+</li>
+<li><p><code>git checkout</code>：将HEAD指向当前所处分支的最新的commit节点</p>
+</li>
+<li><p><code>git checkout file_name</code>：将指定的文件更新为当前所处分支的最新的commit节点的文件</p>
+</li>
+<li><p><code>git checkout branch_name</code>：将HEAD指向branch（切换分支）</p>
+</li>
+<li><p><code>git merge branch_name</code>：将branch所指向的commit及其parent（也就是该branch上所有的修改）合并到master中</p>
+</li>
+</ul>
 <h1 id="终端I-O"><a href="#终端I-O" class="headerlink" title="终端I&#x2F;O"></a>终端I&#x2F;O</h1><p><code>setbuf(stdin,NULL)</code>并不会使得终端在输入一个字符之后程序立马能收到，因为输入缓冲区不仅程序本身有，终端驱动也有。想要达到效果需要对终端进行配置。</p>
 <p>终端I&#x2F;O有两种不同的工作模式：</p>
 <ul>
