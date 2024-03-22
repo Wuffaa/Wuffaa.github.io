@@ -123,10 +123,10 @@
     <div class="post-md">
         
             
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#C"><span class="post-toc-text">C</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SHELL"><span class="post-toc-text">SHELL</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Git"><span class="post-toc-text">Git</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%BB%88%E7%AB%AFI-O"><span class="post-toc-text">终端I&#x2F;O</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%99%9A%E6%8B%9F%E5%8C%96"><span class="post-toc-text">虚拟化</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Kernel"><span class="post-toc-text">Kernel</span></a></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#C"><span class="post-toc-text">C</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%96%87%E4%BB%B6"><span class="post-toc-text">文件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%87%BD%E6%95%B0"><span class="post-toc-text">系统函数</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SHELL"><span class="post-toc-text">SHELL</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Git"><span class="post-toc-text">Git</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%BB%88%E7%AB%AFI-O"><span class="post-toc-text">终端I&#x2F;O</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E8%99%9A%E6%8B%9F%E5%8C%96"><span class="post-toc-text">虚拟化</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Kernel"><span class="post-toc-text">Kernel</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%80%BB%E7%BA%BF"><span class="post-toc-text">总线</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%BD%91%E5%8D%A1"><span class="post-toc-text">网卡</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#IOMMU%E4%B8%8EVFIO"><span class="post-toc-text">IOMMU与VFIO</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CPU"><span class="post-toc-text">CPU</span></a></li></ol>
             
         
-        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">typeof(<span class="type">int</span> [<span class="number">5</span>])  a;  =&gt; <span class="type">int</span> a[<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> b[<span class="number">5</span>];   __auto_type a = b; =&gt; <span class="type">int</span> a[<span class="number">5</span>] = b;</span><br></pre></td></tr></table></figure>
+        <link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/css/lightgallery.min.css" /><div class=".article-gallery"><h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">typeof(<span class="type">int</span> [<span class="number">5</span>]) a;	<span class="comment">//int a[5];</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> b[<span class="number">5</span>];</span><br><span class="line">__auto_type a = b;	<span class="comment">////int a[5] = b;</span></span><br><span class="line"></span><br><span class="line"><span class="type">char</span> *a = program_invocation_name; <span class="comment">//a = argv[0];</span></span><br><span class="line"></span><br><span class="line"><span class="type">char</span> *a = program_invocation_short_name; <span class="comment">//a = 删除了路径的argv[0];</span></span><br><span class="line">    </span><br><span class="line"><span class="built_in">free</span>(<span class="literal">NULL</span>);	<span class="comment">//空操作</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -164,6 +164,15 @@
 
 
 
+<h1 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h1><h2 id="unlink"><a href="#unlink" class="headerlink" title="unlink"></a>unlink</h2><p>unlink会将硬链接记数减一，如果减为0则删除文件并在<strong>文件没有被其他进程打开后</strong>释放与其关联的空间</p>
+<h2 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h2><ol>
+<li><strong>SUID</strong>（所有者）: 能够让二进制程序的执行者临时拥有属主的权限（所有者的rwx变为rws）。（执行该文件时uid替换成文件的所有者）</li>
+<li><strong>SGID</strong>（所有组）: 有两种应用场景，当对二进制程序进行设置时，能够让执行者临时获取到文件所有组的权限；而对目录进行设置时，则是让目录内新创建的文件自动继承该目录原有用户组的名称（所有组的rwx变为rws）。（执行文件或目录时，gid替换为文件&#x2F;目录的所有组）</li>
+<li><strong>SBIT</strong>（其他）: 粘滞位，当时文件使用时，该文件只能被其所有者执行删除操作；当对某个目录使用时，该目录中的文件就只能被其所有者执行删除操作（其他的rwx变为rwt）。</li>
+</ol>
+<h1 id="系统函数"><a href="#系统函数" class="headerlink" title="系统函数"></a>系统函数</h1><ul>
+<li>mmap()：A file is mapped in multiples of the page size.  For a file that is not a multiple of the page size, the remaining bytes in the  partial page  at the end of the mapping are zeroed when mapped, and modifications to that region are not written out to the file.</li>
+</ul>
 <h1 id="SHELL"><a href="#SHELL" class="headerlink" title="SHELL"></a>SHELL</h1><ul>
 <li><p><code>cd - </code> ：在当前目录和上个目录跳转</p>
 </li>
@@ -233,6 +242,67 @@
 </ul>
 <h1 id="虚拟化"><a href="#虚拟化" class="headerlink" title="虚拟化"></a>虚拟化</h1><p>kvm大页内存可以分配给虚拟机内存，而不考虑Guest OS是否使用。如果Guest OS不使用大页内存，则它值会识别小页。反过来，如果Guest OS计划使用大页内存，则一定要给虚拟机分配大页内存。否则虚拟机的性能将不及预期。</p>
 <h1 id="Kernel"><a href="#Kernel" class="headerlink" title="Kernel"></a>Kernel</h1><p>用户态采用抢占式调度；内核态在Linux 2.6版本之前只支持非抢占式调度，2.6开始支持抢占式调度。</p>
+<h2 id="大页"><a href="#大页" class="headerlink" title="大页"></a>大页</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">HugePages_Total:       0---------------------HugePage池中大小，包括静态预留以及超额的数量。</span><br><span class="line">HugePages_Free:        0---------------------HugePage池中未被分配HugePage数量，包括承诺分配但未最终分配的部分。</span><br><span class="line">HugePages_Rsvd:        0---------------------HugePage池中承诺被分配但还未执行分配操作的HugePage数量。</span><br><span class="line">HugePages_Surp:        0---------------------HugePage池中超出/proc/sys/vm/nr_hugepages。最大不超过/proc/sys/vm/nr_overcommit_hugepages。</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h1><p>device 可以动态的把信息注册到 bus 上，driver 同样也是需要注册到 bus 上，这样做的好处是 driver 可以动态的拿取对应的设备的基地址、中断号，这样无论设备怎么变化，驱动所对应的实现基本上不需要更改了。</p>
+<p>有三种特殊的bus，分别是 system bus、virtual bus 和 platform bus。它们并不是一个实际存在的bus（像USB、I2C等），而是为了方便设备模型的抽象，而虚构的。</p>
+<p>class其实就是根据人们的日常习惯对设备进行分类的一种表现形式，比如：键盘和鼠标我们都看成输入设备，属于输入设备分类。此外还有 net 网络设备分类，block 块设备分类，tty 设备分类。&#x2F;sys&#x2F;class</p>
+<h1 id="网卡"><a href="#网卡" class="headerlink" title="网卡"></a>网卡</h1><p>队列收发包寄存器</p>
+<p><a href="/images/nic-queue.png" title="nic-queue" class="gallery-item" style="box-shadow: none;"> <img src="/images/nic-queue.png" alt="nic-queue"></a></p>
+<ol>
+<li><p>RDBA寄存器：这个寄存器存放了报文接收描述符环形队列的起始地址，也就是上图中Base指向的地址。 　　</p>
+</li>
+<li><p>RDLEN寄存器：这个寄存器存放了报文接收描述符环形队列的长度，也就是接收描述符环形队列所占用的字节数，对应上图中的Size。 　　</p>
+</li>
+<li><p>RDH寄存器：这个寄存器存放的是一个距离队列头部的偏移值，代表的是第一个可以被网卡用来存放报文信息的描述符。当网卡完成了将一个报文信息存放到描述符后，就会更新RDH寄存器的值，使之指向下一个即将用来存放报文信息的描述符。也就是说这个寄存器的值是由网卡来更新的，该寄存器对应上图中的Head。 　　</p>
+</li>
+<li><p>RDT寄存器：这个寄存器存放的也是一个距离队列头部的偏移值，代表的是硬件可以用来存放报文信息的最后一个描述符的下一个描述符。一般dpdk会初始化该值为描述符个数减一，避免硬件竞争。</p>
+</li>
+<li><p>TDH寄存器：在网卡启动后由网卡更新TDH寄存器的值，代表第一个可以被网卡发送的描述符。</p>
+</li>
+<li><p>TDT寄存器：软件更新该寄存器，以向发送队列添加更多的描述符。网卡试图发送在TDH和TDT之间所有的数据包。</p>
+</li>
+</ol>
+<p>DD位（Descriptor Done）：该位为1表示网卡已经处理完该描述符并完成回写操作。该位为0表示网卡尚未处理该队列描述符。</p>
+<p>   对于接收来说：该位为1表示网卡已经将该描述符所对应的dma缓冲区传输完成，软件可以获取并处理该描述符所对应的数据包。</p>
+<p>​              该位为0表示网卡可以使用该描述符所对应的dma缓冲区进行数据的接收。(也说明该描述符还没有收到报文)</p>
+<p>write-back： 回写代表的就是网卡往描述符对应的缓冲区中存放了报文数据，并将报文相关的元信息写入到描述符对应的域中，并设置DD位（rx、tx的回写都会设置此位），以告诉网卡驱动该描述已经存放了报文信息。回写格式中涉及到很多和报文相关的信息，如接收报文时所使用的RSS类型，报文长度和报文接收状态等信息</p>
+<p>​           网卡将报文描述符回写给驱动（也就是软件），驱动获取回写信息（如报文长度、VLAN、Tag以及校验和信息等）。</p>
+<p>82599网卡支持两种报文描述符，一种是传统报文描述符，另一种是高级报文描述符（高级报文描述符的结构体分为两种，分别为读格式和回写格式）</p>
+<p>   在接收数据包时，回写操作是立马执行的</p>
+<p>数据包的发送：</p>
+<p>RS位表示软件通知网卡在处理到当前描述符时需要进行回写操作</p>
+<p>nb_tx_free  剩余队列描述符数量（可用数量），初始化为队列描述符数量减一。每次往该队列上放一个包就将nb_tx_free减一。</p>
+<p>nb_tx_used 用于记录当前队列以被软件填充的描述符数量（当该值达到tx_rs_thresh阈值时就需要设置rs位，并重置nb_tx_used为0继续记录）</p>
+<p>tx_rs_thresh 若nb_tx_used大于等于该值，则设置当前包的最后一个mbuf_seg对应的描述符RS位为1，并且重置nb_tx_used为0</p>
+<p>数据包的接收：</p>
+<p>rx_free_thresh  该队列每收到一个包就将nb_rx_hold加1，当nb_rx_hold大于rx_free_thresh时，才会更新RDT寄存器(更新时会将tail值减一，保证RDH和RDT永远不会相等，避免硬件竞争)</p>
+<h2 id="SR-IOV"><a href="#SR-IOV" class="headerlink" title="SR-IOV"></a>SR-IOV</h2><h1 id="IOMMU与VFIO"><a href="#IOMMU与VFIO" class="headerlink" title="IOMMU与VFIO"></a>IOMMU与VFIO</h1><p>驱动层次（由低到高）：dma-&gt;iommu-&gt;vfio</p>
+<p>iommu与mmu类似，将dma&#x2F;interrupt重新映射，映射前的地址为va，映射后的地址为pa。</p>
+<p>iommu_groups将设备分组，把需要访问共同物理地址的设备分配到一组中，组内共享dma地址映射表，组间分配不同的物理地址空间，这样做到了物理上的dma隔离。为了防止dma攻击，不能将同一组的设备分配给不同的guest，或者同一组的设备分配给host和guest，</p>
+<p>vfio在此基础上增加了container概念</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">container</span><br><span class="line">+------------------------+</span><br><span class="line">|    group0    group1    |</span><br><span class="line">|  +-------+  +------+   |</span><br><span class="line">|  | dev0  |  | dev2 |   |</span><br><span class="line">|  | dev1  |  +------+   |</span><br><span class="line">|  +-------+             |</span><br><span class="line">+------------------------+</span><br></pre></td></tr></table></figure>
+
+<p>用户可能需要多个group的设备共享物理内存，实现特定功能。因此引入了container，container可以实现不同组之间共享tlb，这样减少了开销（iommu的tlb抖动和页表的复制）。</p>
+<p>iommu作用：</p>
+<ol>
+<li><p>用于将硬件直通给虚机</p>
+</li>
+<li><p>用于用户态驱动</p>
+</li>
+</ol>
+<h1 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h1><h2 id="DDIO"><a href="#DDIO" class="headerlink" title="DDIO"></a>DDIO</h2><p>INTEL CPU的一种技术，至强系列处理器有。可以使得DMA传输的数据直接从io设备传送到LLC cache中，绕过内存总线。当对应数据的cache行被踢出时，才会写到内存中。</p>
+<h2 id="VT-x-VT-d"><a href="#VT-x-VT-d" class="headerlink" title="VT-x&#x2F;VT-d"></a>VT-x&#x2F;VT-d</h2><ul>
+<li>VT-x：对CPU进行了扩展，引入了两个新的模式<ul>
+<li>VMX根模式：宿主机运行的模式，可以执行敏感指令</li>
+<li>VMX非根模式：客户机运行的模式，执行敏感指令会触发VM-Exit，陷入到根模式</li>
+</ul>
+</li>
+<li>EPT：VT-x所提供的扩展页表技术，硬件上实现了GVA-&gt;GPA-&gt;HPA的两次地址转换，提高了内存虚拟化的性能</li>
+<li>VT-d(IOMMU)：提供了DMA重映射功能，使得透传给客户机的I&#x2F;O设备在进行DMA操作时可以正确拿到宿主机的物理地址。</li>
+</ul>
 </div><script src="https://jsd.onmicrosoft.cn/npm/hexo-theme-a4@latest/source/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
