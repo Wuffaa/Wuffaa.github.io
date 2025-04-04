@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
     <meta name="description" content="dpdk" />
-    <meta name="hexo-theme-A4" content="v1.9.6" />
-    <link rel="alternate icon" type="image/webp" href="/images/Neurothingy.jpg">
+    <meta name="hexo-theme-A4" content="v1.9.7" />
+    <link rel="alternate icon" type="image/webp" href="/img/favicon.webp">
     <title>Wuffaa | Blog</title>
 
     
@@ -58,6 +58,12 @@
    
 <link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
 
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
 
 <meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
@@ -185,6 +191,9 @@ mjx-container[display="true"] + br {
     
     
 
+
+
+
     
     
     
@@ -225,14 +234,26 @@ mjx-container[display="true"] + br {
 
 <div class="header">
     <div class="header-container">
-        <img style="
-        width: 56px;
-        height: auto;" alt="^-^" cache-control="max-age=86400" class="header-img" src="/images/Neurothingy.jpg" width="10%"></img>
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 0; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/img/favicon.webp" 
+        />
         <div class="header-content">
             <a class="logo" href="/">Wuffaa</a> 
             <span class="description">el psy congroo</span> 
         </div>
-        
     </div>
     
    
@@ -269,7 +290,7 @@ mjx-container[display="true"] + br {
             <div class="post-head-meta-center">
         
                 
-                    <span>最近更新：2024-03-22</span> 
+                    <span>最近更新：2025-04-04</span> 
                 
                 
                     
@@ -645,7 +666,7 @@ mjx-container[display="true"] + br {
 
 
 <h1 id="Ring-Queue"><a href="#Ring-Queue" class="headerlink" title="Ring(Queue)"></a>Ring(Queue)</h1><p>循环队列，支持多生产者入队和多消费者出队，无锁化实现。</p>
-<p>单消费者入队：</p>
+<p>单生产者入队：</p>
 <ol>
 <li><p>复制<code>ring-&gt;prod_head</code>和<code>ring-&gt;cons_tail</code> 到本地变量中，判断是否有足够空间并且将本地变量<code>prod_next</code>指向待更新的位置</p>
 <p><a href="/images/ring-enqueue1.svg" title="enqueue1" class="gallery-item" style="box-shadow: none;"> <img src="/images/ring-enqueue1.svg" alt="enqueue1"></a></p>
@@ -657,7 +678,7 @@ mjx-container[display="true"] + br {
 <p> <a href="/images/ring-enqueue3.svg" title="enqueue3" class="gallery-item" style="box-shadow: none;"> <img src="/images/ring-enqueue3.svg" alt="enqueue3"></a></p>
 </li>
 </ol>
-<p>多消费者入队：</p>
+<p>多生产者入队：</p>
 <ol>
 <li><p>所有core，都复制<code>ring-&gt;prod_head</code>和<code>ring-&gt;cons_tail</code> 到本地变量中，判断是否有足够空间并且将本地变量<code>prod_next</code>指向待更新的位置</p>
 <p> <a href="/images/ring-mp-enqueue1.svg" title="mp_enqueue1" class="gallery-item" style="box-shadow: none;"> <img src="/images/ring-mp-enqueue1.svg" alt="mp_enqueue1"></a></p>
