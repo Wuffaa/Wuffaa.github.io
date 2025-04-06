@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+    
+    <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
+    <meta name="description" content="dpdk" />
+    <meta name="hexo-theme-A4" content="v1.9.7" />
+    <link rel="alternate icon" type="image/webp" href="/images/Neurothingy.jpg">
+    <title>Wuffaa | Blog</title>
+
+    
+        
+<link rel="stylesheet" href="/css/highlight/style1.css">
+
+        
+<link rel="stylesheet" href="/css/reset.css">
+
+        
+<link rel="stylesheet" href="/css/markdown.css">
+
+        
+<link rel="stylesheet" href="/css/fonts.css">
+ 
+         <!--注意：首页既不是post也不是page-->
+        
+        
+        
+<link rel="stylesheet" href="/css/ui.css">
+ 
+        
+<link rel="stylesheet" href="/css/style.css">
+
+
+        
+            <!--返回顶部css-->
+            
+<link rel="stylesheet" href="/css/returnToTop.css">
+
+            
+<link rel="stylesheet" href="/css/unicons.css">
+
+        
+        
+            <!--目录-->
+            
+<link rel="stylesheet" href="/css/toc.css">
+
+        
+    
+
+    
+        
+<link rel="stylesheet" href="/css/returnToLastPage.css">
+
+    
+    
+   
+<link rel="stylesheet" href="/css/lightgallery-bundle.min.css">
+
+
+   
+        
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+    
+    
+
+    
+    
+
+
+
+    
+
+    
+    
+
+
+
+
+    
+    
+    
+    <body>
+        <script src="/js/darkmode-js.min.js"></script>
+        
+        <script>
+            const options = {
+                bottom: '40px', // default: '32px'
+                right: 'unset', // default: '32px'
+                left: '42px', // default: 'unset'
+                time: '0.3s', // default: '0.3s'
+                mixColor: '#fff', // default: '#fff'
+                backgroundColor: ' #e4e4e4 ',  // default: '#fff'
+                buttonColorDark: '#100f2c',  // default: '#100f2c'
+                buttonColorLight: '#fff', // default: '#fff'
+                saveInCookies: true, // default: true,
+                label: '🌓', // default: ''
+                autoMatchOsTheme: true // default: true
+            }
+            const darkmode = new Darkmode(options);
+            darkmode.showWidget();
+        </script>
+        
+        
+            <div class="left-toc-container">
+                <nav id="toc" class="bs-docs-sidebar"></nav>
+            </div>
+        
+        <div class="paper">
+            
+            
+            
+            
+                <div class="shadow-drop-2-bottom paper-main">
+                    
+
+
+<div class="header">
+    <div class="header-container">
+        <style>
+            .header-img {
+                width: 56px;
+                height: auto;
+                object-fit: cover; /* 保持图片比例 */
+                transition: transform 0.3s ease-in-out; 
+                border-radius: 50%; 
+            }
+            
+        </style>
+        <img 
+            alt="^-^" 
+            cache-control="max-age=86400" 
+            class="header-img" 
+            src="/images/Neurothingy.jpg" 
+        />
+        <div class="header-content">
+            <a class="logo" href="/">Wuffaa</a> 
+            <span class="description">el psy congroo</span> 
+        </div>
+    </div>
+    
+   
+    <ul class="nav">
+        
+    </ul>
+</div> 
+        
+                    
+                    
+
+                    
+                    
+                    
+                    <!--说明是文章post页面-->
+                    
+                        <div class="post-main">
+    
+
+    
+        
+            
+                <div class="post-main-title" style="text-align: center;">
+                    dpdk
+                </div>
+            
+        
+      
+    
+
+    
+
+        
+            <div class="post-head-meta-center">
+        
+                
+                    <span>最近更新：2025-04-06</span> 
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                     <span>字数总计：3.4k</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span>阅读估时：13分钟</span>
+                
+                
+                    
+                        &nbsp; | &nbsp;
+                    
+                    <span id="busuanzi_container_page_pv">
+                        阅读量：<span id="busuanzi_value_page_pv"></span>次
+                    </span>
+                
+            </div>
+    
+
+    <div class="post-md">
+        
+            
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#OVS"><span class="post-toc-text">OVS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CLS-CLASSIFIER"><span class="post-toc-text">CLS(CLASSIFIER)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CLS-API"><span class="post-toc-text">CLS API</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CLS%E5%BA%94%E7%94%A8"><span class="post-toc-text">CLS应用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#route"><span class="post-toc-text">route</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#tunnel"><span class="post-toc-text">tunnel</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#openflow-table"><span class="post-toc-text">openflow table</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CLS%E5%8E%9F%E7%90%86"><span class="post-toc-text">CLS原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8E%A9%E7%A0%81%E4%BC%98%E5%8C%96"><span class="post-toc-text">掩码优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%88%86%E6%AE%B5hash%E5%8C%B9%E9%85%8D"><span class="post-toc-text">分段hash匹配</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%89%8D%E7%BC%80%E5%9F%9F%E5%8C%B9%E9%85%8D"><span class="post-toc-text">前缀域匹配</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%EF%BC%88Binary-trie%EF%BC%89"><span class="post-toc-text">前置知识（Binary trie）</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%89%8D%E7%BC%80%E5%9F%9F"><span class="post-toc-text">自定义前缀域</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E5%86%85%E7%BD%AEl4-port%E5%89%8D%E7%BC%80%E5%9F%9F"><span class="post-toc-text">内置l4 port前缀域</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A7%84%E5%88%99%E7%89%88%E6%9C%AC%E5%8F%B7%E6%8E%A7%E5%88%B6"><span class="post-toc-text">规则版本号控制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#conjunction%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">conjunction实现</span></a></li></ol></li></ol></li></ol></li></ol>
+            
+        
+        <div class=".article-gallery"><h1 id="OVS"><a href="#OVS" class="headerlink" title="OVS"></a>OVS</h1><h2 id="CLS-CLASSIFIER"><a href="#CLS-CLASSIFIER" class="headerlink" title="CLS(CLASSIFIER)"></a>CLS(CLASSIFIER)</h2><p>slowpath的报文分类器，根据下发的规则，对输入flow进行匹配，返回命中的规则并设置该次匹配所感兴趣的掩码（如果有需要的话）。这个掩码为fastpath所用，fastpath会根据掩码下发并生成fastpath规则，使后面类似的流量（掩码后命中fastpath规则）进行快转。</p>
+<h3 id="CLS-API"><a href="#CLS-API" class="headerlink" title="CLS API"></a>CLS API</h3><p>cls初始化函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">classifier_init</span><span class="params">(<span class="keyword">struct</span> classifier *, <span class="type">const</span> <span class="type">uint8_t</span> *flow_segments)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>flow_segments为一个数组，每个元素表示分段点在flow中的偏移（8字节为一个单位），数组最后一个元素的值一定是整个flow的大小（8字节为一个单位）。</p>
+<p>flow_segments会影响cls构建的行为，在构建时通过对flow进行分段，加速了匹配过程，使得对于无法命中规则的flow能够更快速的确定。</p>
+<p>cls规则初始化函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span></span><br><span class="line"><span class="title function_">cls_rule_init</span><span class="params">(<span class="keyword">struct</span> cls_rule *rule, <span class="type">const</span> <span class="keyword">struct</span> match *match, <span class="type">int</span> priority)</span>；</span><br></pre></td></tr></table></figure>
+
+
+
+<p>cls规则插入函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cls_conjunction</span> &#123;</span></span><br><span class="line">    <span class="type">uint32_t</span> id;	<span class="comment">//conjunction_id</span></span><br><span class="line">    <span class="type">uint8_t</span> clause;	<span class="comment">//表明该规则为conjunction_id的第几个维度</span></span><br><span class="line">    <span class="type">uint8_t</span> n_clauses;<span class="comment">//表明该conjunction_id总共有几个维度</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Inserts &#x27;rule&#x27; into &#x27;cls&#x27;.  Until &#x27;rule&#x27; is removed from &#x27;cls&#x27;, the caller</span></span><br><span class="line"><span class="comment"> * must not modify or free it.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &#x27;cls&#x27; must not contain an identical rule (including wildcards, values of</span></span><br><span class="line"><span class="comment"> * fixed fields, and priority).  Use classifier_find_rule_exactly() to find</span></span><br><span class="line"><span class="comment"> * such a rule. */</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">classifier_insert</span><span class="params">(<span class="keyword">struct</span> classifier *, <span class="type">const</span> <span class="keyword">struct</span> cls_rule *,</span></span><br><span class="line"><span class="params">                       <span class="type">ovs_version_t</span>, <span class="type">const</span> <span class="keyword">struct</span> cls_conjunction *,</span></span><br><span class="line"><span class="params">                       <span class="type">size_t</span> n_conjunctions)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>conjunction是可选功能，用于ovs的conjunction功能实现</p>
+<p>cls规则匹配函数：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Finds and returns the highest-priority rule in &#x27;cls&#x27; that matches &#x27;flow&#x27; and</span></span><br><span class="line"><span class="comment"> * that is visible in &#x27;version&#x27;.  Returns a null pointer if no rules in &#x27;cls&#x27;</span></span><br><span class="line"><span class="comment"> * match &#x27;flow&#x27;.  If multiple rules of equal priority match &#x27;flow&#x27;, returns one</span></span><br><span class="line"><span class="comment"> * arbitrarily.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * If a rule is found and &#x27;wc&#x27; is non-null, bitwise-OR&#x27;s &#x27;wc&#x27; with the</span></span><br><span class="line"><span class="comment"> * set of bits that were significant in the lookup.  At some point</span></span><br><span class="line"><span class="comment"> * earlier, &#x27;wc&#x27; should have been initialized (e.g., by</span></span><br><span class="line"><span class="comment"> * flow_wildcards_init_catchall()).</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &#x27;flow&#x27; is non-const to allow for temporary modifications during the lookup.</span></span><br><span class="line"><span class="comment"> * Any changes are restored before returning.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &#x27;conj_flows&#x27; is an optional parameter.  If it is non-null, the matching</span></span><br><span class="line"><span class="comment"> * conjunctive flows are inserted. */</span></span><br><span class="line"><span class="type">const</span> <span class="keyword">struct</span> cls_rule *</span><br><span class="line"><span class="title function_">classifier_lookup</span><span class="params">(<span class="type">const</span> <span class="keyword">struct</span> classifier *cls, <span class="type">ovs_version_t</span> version,</span></span><br><span class="line"><span class="params">                  <span class="keyword">struct</span> flow *flow, <span class="keyword">struct</span> flow_wildcards *wc,</span></span><br><span class="line"><span class="params">                  <span class="keyword">struct</span> hmapx *conj_flows)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="CLS应用"><a href="#CLS应用" class="headerlink" title="CLS应用"></a>CLS应用</h3><h4 id="route"><a href="#route" class="headerlink" title="route"></a>route</h4><h4 id="tunnel"><a href="#tunnel" class="headerlink" title="tunnel"></a>tunnel</h4><h4 id="openflow-table"><a href="#openflow-table" class="headerlink" title="openflow table"></a>openflow table</h4><h3 id="CLS原理"><a href="#CLS原理" class="headerlink" title="CLS原理"></a>CLS原理</h3><p>cls主要是利用hash表来进行规则的插入和查找。</p>
+<p><strong>cls规则分为三部分组成</strong>：</p>
+<ul>
+<li>cls_flow：记录规则匹配的内容</li>
+<li>cls_mask：记录规则感兴趣的匹配项</li>
+<li>cls_priority：记录规则优先级</li>
+</ul>
+<p>当一个flow送入cls中进行规则匹配时，首先需要将flow与cls规则中的<code>cls_mask</code>相与，得到的匹配串再与<code>cls_flow &amp; cls_mask</code>进行比较，若相等，则命中该规则，若不想等，则未命中该规则。</p>
+<p>由于规则匹配时，flow必须与<code>cls_mask</code>相与后才能进行下一步匹配，所以cls将cls规则按照<code>cls_mask</code>分到不同的组中。这样，每组中的<code>cls_mask</code>都相同，flow只需要与<code>cls_mask</code>相与一次，就可以与该组中所有的cls规则进行比较了。这个组在cls中被称为subtable。</p>
+<p><strong>subtable构成</strong>：</p>
+<ul>
+<li>max_priority：表示该subtable中优先级最高的规则的优先级</li>
+<li>index_maps：整个数组存储着该subtable的mask（至于为什么使用数组存，后面的分段hash匹配有讲到）</li>
+<li>rules：hash表，key为<code>cls_flow &amp; cls_mask</code>的hash值，value为cls规则</li>
+</ul>
+<p>下面是cls中subtable的具体实现，其大部分字段为之后所介绍的掩码优化所用</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cls_subtable</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">cmap_node</span> <span class="title">cmap_node</span>;</span>    <span class="comment">/* Within classifier&#x27;s &#x27;subtables_map&#x27;. */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* These fields are only used by writers. */</span></span><br><span class="line">    <span class="type">int</span> max_priority;              <span class="comment">/* Max priority of any rule in subtable. */</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> max_count;        <span class="comment">/* Count of max_priority rules. */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Accessed by iterators. */</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">rculist</span> <span class="title">rules_list</span>;</span>              <span class="comment">/* Unordered. */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Identical, but lower priority rules are not inserted to any of the</span></span><br><span class="line"><span class="comment">     * following data structures. */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* These fields are accessed by readers who care about wildcarding. */</span></span><br><span class="line">    <span class="comment">//subtable将mask_flow分为多个不为0的分段掩码，每个分段掩码对应一个index_maps</span></span><br><span class="line">    <span class="comment">//查找时按照分段掩码进行分段hash查找，该字段就表明了该subtable需要进行几次的分段查找</span></span><br><span class="line">    <span class="comment">//(这里的查找次数为分段掩码个数-1)</span></span><br><span class="line">    <span class="type">const</span> <span class="type">uint8_t</span> n_indices;                   <span class="comment">/* How many indices to use. */</span></span><br><span class="line">    <span class="comment">//存储分段掩码</span></span><br><span class="line">    <span class="type">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">flowmap</span> <span class="title">index_maps</span>[<span class="title">CLS_MAX_INDICES</span> + 1];</span> <span class="comment">/* Stage maps. */</span></span><br><span class="line">    <span class="comment">//该subtable的mask在trie树的前缀掩码长度，如果不是前缀掩码，则为0，该trie不生效</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> trie_plen[CLS_MAX_TRIES];  <span class="comment">/* Trie prefix length in &#x27;mask&#x27;</span></span><br><span class="line"><span class="comment">                                             * (runtime configurable). */</span></span><br><span class="line">    <span class="comment">//l4层的port_src + port_dst</span></span><br><span class="line">    <span class="comment">//因为前缀掩码可能不连续，因此在插入和匹配时与掩码相与，保证trie的正确性</span></span><br><span class="line">    <span class="comment">//前缀长度为MSB到LSB set之间长度（例：0b001000的前缀长度为3）</span></span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> ports_mask_len;</span><br><span class="line">    <span class="comment">//用于存储分段hash，每个分段所计算出来的hash值包含前面分段的部分的hash值</span></span><br><span class="line">    <span class="comment">//因此最后一个分段的hash值在这里并没有存储，因为最后一个分段的hash值就是整个miniflow的hash值</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ccmap</span> <span class="title">indices</span>[<span class="title">CLS_MAX_INDICES</span>];</span>  <span class="comment">/* Staged lookup indices. */</span></span><br><span class="line">    <span class="comment">//port的掩码可能非前缀，所以这里将插入和匹配的数据与掩码相与，保证非前缀掩码不会影响到trie的使用</span></span><br><span class="line">    rcu_trie_ptr ports_trie;                <span class="comment">/* NULL if none. */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* These fields are accessed by all readers. */</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">cmap</span> <span class="title">rules</span>;</span>                      <span class="comment">/* Contains &#x27;cls_match&#x27;es. */</span></span><br><span class="line">    <span class="type">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">minimask</span> <span class="title">mask</span>;</span>             <span class="comment">/* Wildcards for fields. */</span></span><br><span class="line">    <span class="comment">/* &#x27;mask&#x27; must be the last field. */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>cls规则插入流程</strong>：</p>
+<ul>
+<li>根据cls_mask查找对应的subtable，若未找到，则创建一个新的subtable</li>
+<li>若找到subtable，则计算该cls的hash值，并将其插入到subtable中。如果该cls规则是该subtable中优先级最高的规则，则更新subtable的<code>max_priority</code></li>
+</ul>
+<p><strong>cls匹配流程</strong>：</p>
+<ul>
+<li>设置local_priority为最小</li>
+<li>按照优先级从高到低遍历subtable，其中subtable的最小优先级要大于local_priority</li>
+<li>将待匹配的flow跟subtable的mask相与，而后计算hash值，在<code>rules</code>中进行hash查找</li>
+<li>若找到规则，且优先级比local_priority大，则记录所命中的cls规则，更新local_priority为所命中的cls规则的优先级</li>
+<li>跳到第二步，直到没有可访问的subtable为止</li>
+<li>此时所记录的cls规则为最终所命中的cls规则</li>
+</ul>
+<h4 id="掩码优化"><a href="#掩码优化" class="headerlink" title="掩码优化"></a>掩码优化</h4><p>主要用于规则匹配失败时wc掩码的设置（基于subtable的，因为该flow可能在某个低优先级的subtable中命中，而在比他高优先级的subtable中未命中）。</p>
+<h5 id="分段hash匹配"><a href="#分段hash匹配" class="headerlink" title="分段hash匹配"></a>分段hash匹配</h5><p>根据flow结构体的成员分布，将flow分为4段：</p>
+<ul>
+<li>Metadata数据段</li>
+<li>L2数据段</li>
+<li>L3数据段</li>
+<li>L4数据段</li>
+</ul>
+<p>在subtable创建时，将该subtable的掩码按照上面的描述分为n段（跳过掩码为0的数据段，最多4段），存到<code>index_maps</code>中</p>
+<p><strong>规则插入时</strong>：</p>
+<ul>
+<li>根据规则的mask找到对应的subtable</li>
+<li>依次计算前n段的hash，并插入到<code>indices</code>中（这里不包括最后一段，因为包括了最后一段就是整个flow的hash，而这个hash值已经作为key被插入到subtable的<code>rules</code>中）</li>
+</ul>
+<p><strong>规则查找时</strong>：</p>
+<ul>
+<li>根据flow的mask找到对应的subtable</li>
+<li>通过前缀域检查（优化2）</li>
+<li>根据该subtable的分段掩码，计算该flow前n段掩码后的hash，并在<code>indices</code>中查找<ul>
+<li>若查找失败，则将wc设置为该subtable前n段的掩码</li>
+<li>若查找成功，则将wc设置为该subtable的掩码，并返回命中的cls规则</li>
+</ul>
+</li>
+</ul>
+<h5 id="前缀域匹配"><a href="#前缀域匹配" class="headerlink" title="前缀域匹配"></a>前缀域匹配</h5><h6 id="前置知识（Binary-trie）"><a href="#前置知识（Binary-trie）" class="headerlink" title="前置知识（Binary trie）"></a>前置知识（Binary trie）</h6><p>前缀二叉树，一种用于快速检索的二叉树结构，其基本性质如下：</p>
+<ul>
+<li>节点存储最多32位的前缀信息和该节点可命中的规则数</li>
+<li>节点指向左孩子的边代表下一个节点的前缀信息的最高位为0，指向右孩子的边代表下一个节点的前缀信息的最高位为1</li>
+<li>根节点中的前缀信息为前缀串的第一位为MSB，叶节点中的前缀信息的最后一位为LSB</li>
+<li>根节点的前缀信息可能为空</li>
+<li>从根节点到某一结点，路径上经过节点的前缀信息连接起来，为该节点对应的完整的前缀串</li>
+</ul>
+<p>例：添加三条规则到trie中</p>
+<table>
+<thead>
+<tr>
+<th>rule1</th>
+<th>rule2</th>
+<th>rule3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0b1011&#x2F;0b1111</td>
+<td>0b1011&#x2F;0b1000</td>
+<td>0b0100&#x2F;0b1100</td>
+</tr>
+</tbody></table>
+<p>构建的binary trie如下：</p>
+<p><a href="/images/binary_trie.svg" title="binary_trie" class="gallery-item" style="box-shadow: none;"> <img src="/images/binary_trie.svg" alt="binary_trie"></a></p>
+<h6 id="自定义前缀域"><a href="#自定义前缀域" class="headerlink" title="自定义前缀域"></a>自定义前缀域</h6><p>通过API来设置cls的trie，在规则匹配时用于生成匹配失败的wc。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//cls自定义前缀域设置，这些前缀域可以使得匹配后所生成的掩码更小，保证了所下发的fastpath规则尽可能的聚合。</span></span><br><span class="line"><span class="type">bool</span> <span class="title function_">classifier_set_prefix_fields</span><span class="params">(<span class="keyword">struct</span> classifier *,</span></span><br><span class="line"><span class="params">                                  <span class="type">const</span> <span class="keyword">enum</span> mf_field_id *trie_fields,</span></span><br><span class="line"><span class="params">                                  <span class="type">unsigned</span> <span class="type">int</span> n_trie_fields)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>trie是基于cls的，每个trie对应一个meta-flow field，目前最多支持4个trie，一般为<code>ipv4_src、ipv4_dst、ipv6_src、ipv6_dst</code>。</p>
+<blockquote>
+<p>trie所对应的field在规则中一定要使用前缀掩码，否则该规则所处的subtable中的trie的前缀长度为0，无法生成聚合的wc</p>
+</blockquote>
+<p><strong>规则插入时对trie的操作</strong>：</p>
+<ul>
+<li>根据规则的mask，查找对应的subtable。subtable中存储着该trie的前缀长度（因为subtable中所有的规则的掩码都相同，所以trie的前缀长度是由subtable存储）</li>
+<li>根据subtable中对该trie的前缀长度，获取该规则对应前缀域的前缀串，并插入trie中</li>
+</ul>
+<p><strong>规则匹配时对trie的操作</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Prefix tree context.  Valid when &#x27;lookup_done&#x27; is true.  Can skip all</span></span><br><span class="line"><span class="comment"> * subtables which have a prefix match on the trie field, but whose prefix</span></span><br><span class="line"><span class="comment"> * length is not indicated in &#x27;match_plens&#x27;.  For example, a subtable that</span></span><br><span class="line"><span class="comment"> * has a 8-bit trie field prefix match can be skipped if</span></span><br><span class="line"><span class="comment"> * !be_get_bit_at(&amp;match_plens, 8 - 1).  If skipped, &#x27;maskbits&#x27; prefix bits</span></span><br><span class="line"><span class="comment"> * must be unwildcarded to make datapath flow only match packets it should. */</span></span><br><span class="line"><span class="comment">//规则匹配时所使用的trie的上下文</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">trie_ctx</span> &#123;</span></span><br><span class="line">    <span class="type">const</span> <span class="class"><span class="keyword">struct</span> <span class="title">cls_trie</span> *<span class="title">trie</span>;</span></span><br><span class="line">    <span class="type">bool</span> lookup_done;        <span class="comment">/* Status of the lookup. */</span></span><br><span class="line">    <span class="comment">//对flow的field仅需要匹配maskbits长度的前缀就可以得到所有的匹配结果</span></span><br><span class="line">    <span class="type">unsigned</span> <span class="type">int</span> maskbits;   <span class="comment">/* Prefix length needed to avoid false matches. */</span></span><br><span class="line">    <span class="comment">//记录该flow所命中的前缀长度，第n位为1表示命中了前缀长度为n+1的规则。</span></span><br><span class="line">    <span class="class"><span class="keyword">union</span> <span class="title">trie_prefix</span> <span class="title">match_plens</span>;</span>  <span class="comment">/* Bitmask of prefix lengths with possible</span></span><br><span class="line"><span class="comment">                                     * matches. */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>根据trie所对应的前缀域，从待匹配的flow中提取该字段所对应的匹配串</p>
+</li>
+<li><p>将该匹配串送入trie中进行匹配，将匹配结果存在<code>trie_ctx</code>中</p>
+</li>
+<li><p>判断是否可能命中了该subtable中的规则（设该subtable对该trie的前缀长度为n）：也就是判断<code>match_plens</code>的第n-1位是否为1。若为1，则说明可能命中了该subtable的规则，若为0，则说明一定没有命中该subtable的规则</p>
+<blockquote>
+<p> 这里说可能命中，是因为不同subtable对该trie的前缀长度可能相同，若为1，也可能命中了其他subtable中的规则</p>
+</blockquote>
+<ul>
+<li><p>若可能命中该subtable中的规则：不做任何操作。因为trie只对未命中规则的wc做优化。</p>
+</li>
+<li><p>若未命中该subtable中的规则：</p>
+<ul>
+<li><p>如果该subtable对该trie的前缀长度大于等于maskbits，则设置wc中对应trie的前缀域的前缀掩码，掩码长度为<code>maskbits</code>。并跳过该subtable的规则匹配。</p>
+<blockquote>
+<p>因为maskbits长度的掩码已经能确定了对于该field，flow和wc掩码后一定没有命中该subtable的规则。</p>
+<p>但为什么要对wc设置maskbits的前缀长度，而不是subtable对该trie的前缀长度呢？</p>
+</blockquote>
+</li>
+<li><p>如果该subtable对该trie的前缀长度小于<code>maskbits</code>，则判断wc中是否设置了掩码长度为<code>maskbits</code>的掩码，如果设置了，则跳过该subtable的规则匹配。如果没设置，则继续该subtable的规则匹配。</p>
+<blockquote>
+<p>当subtable对该trie的前缀长度小于maskbits时，为什么不设置wc为subtable对该trie的前缀长度，并跳过该subtable的规则匹配呢？这样做不是能达到掩码的最小化吗？不理解</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>个人认为，当trie若未命中该subtable中的规则时，直接对wc设置该subtable对该trie的前缀长度，并跳过该subtable的规则匹配。maskbits不再需要。</p>
+</blockquote>
+<h6 id="内置l4-port前缀域"><a href="#内置l4-port前缀域" class="headerlink" title="内置l4 port前缀域"></a>内置l4 port前缀域</h6><p>与优化2类似，使用trie构建，因为port的前缀掩码可能不连续，因此在插入和匹配时与掩码相与，保证trie的正确性。l4 port的前缀长度为<strong>MSB</strong>到<strong>LSB 1</strong>之间长度（0b001000的前缀长度为3）</p>
+<p>该port_trie是基于subtable的。在subtable中，对该flow进行全量匹配后，仍未命中规则，则对该port_trie进行查找，根据查找结果确定<code>port_mask</code>，并将其设置到wc的l4 port前缀域中。</p>
+<p><strong>规则插入时对port_trie的操作</strong>：</p>
+<ul>
+<li>根据规则的mask，查找对应的subtable。subtable中存储着该port_trie及port_trie的前缀长度</li>
+<li>根据subtable中对该port_trie的前缀长度，获取该规则中l4 port的前缀串（<code>[port_src, port_dst] &amp; cls_mask</code>），并插入trie中</li>
+</ul>
+<p><strong>规则匹配时对port_trie的操作</strong>：</p>
+<ul>
+<li>当subtable对该flow进行全量匹配且未命中后，提取flow的port信息（<code>[port_src, port_dst] &amp; subtable_mask</code>），在port_trie中进行查找，并返回匹配长度（这个匹配长度跟trie_ctx中的<code>maskbits</code>一个含义）</li>
+<li>将这个长度作为前缀掩码长度，并设置到wc的l4 port中</li>
+</ul>
+<h4 id="规则版本号控制"><a href="#规则版本号控制" class="headerlink" title="规则版本号控制"></a>规则版本号控制</h4><p>版本号可控制cls中的cls规则是否对用户可见，在cls规则插入和cls规则匹配时，都会带有当前版本号信息。版本号的控制是以cls规则为单位的，因此可以通过API对特定的规则的版本号进行控制。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">versions</span> &#123;</span></span><br><span class="line">    <span class="type">ovs_version_t</span> add_version;              <span class="comment">/* Version object was added in. */</span></span><br><span class="line">    ATOMIC(<span class="type">ovs_version_t</span>) remove_version;   <span class="comment">/* Version object is removed in. */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Makes &#x27;rule&#x27; invisible in &#x27;remove_version&#x27;.  Once that version is used in</span></span><br><span class="line"><span class="comment"> * lookups, the caller should remove &#x27;rule&#x27; via ovsrcu_postpone().</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &#x27;rule&#x27; must be in a classifier.</span></span><br><span class="line"><span class="comment"> * This may only be called by the exclusive writer. */</span></span><br><span class="line"><span class="type">void</span></span><br><span class="line"><span class="title function_">cls_rule_make_invisible_in_version</span><span class="params">(<span class="type">const</span> <span class="keyword">struct</span> cls_rule *rule,</span></span><br><span class="line"><span class="params">                                   <span class="type">ovs_version_t</span> remove_version)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* This undoes the change made by cls_rule_make_invisible_in_version().</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &#x27;rule&#x27; must be in a classifier.</span></span><br><span class="line"><span class="comment"> * This may only be called by the exclusive writer. */</span></span><br><span class="line"><span class="type">void</span></span><br><span class="line"><span class="title function_">cls_rule_restore_visibility</span><span class="params">(<span class="type">const</span> <span class="keyword">struct</span> cls_rule *rule)</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">bool</span></span><br><span class="line"><span class="title function_">cls_rule_visible_in_version</span><span class="params">(<span class="type">const</span> <span class="keyword">struct</span> cls_rule *rule, <span class="type">ovs_version_t</span> version)</span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>在规则插入时，<code>add_version</code>和<code>remove_version</code>相等，当插入完成后，<code>remove_version</code>设置为<code>OVS_VERSION_NOT_REMOVED</code>（ovs_version_t的最大值）。</p>
+<p>在规则查找时会指定当前的版本号，只有<code>add_version &lt;= cur_version &lt; remove_version</code>的版本号才对调用者可见。</p>
+<h4 id="conjunction实现"><a href="#conjunction实现" class="headerlink" title="conjunction实现"></a>conjunction实现</h4><p>略</p>
+</div>
+    </div>
+
+    <div class="post-meta">
+        <i>
+        
+            <span>2025-04-06</span>
+            
+            
+             
+        
+        </i>
+    </div>
+    <br>
+    
+    
+        
+            
+    
+            <div class="post-footer-pre-next">
+                
+
+                
+                    <span class="post-footer-pre-next-last-span-right">下一篇：<a href="/2024/01/01/dpdk/">dpdk</a>
+                    </span>
+                
+            </div>
+    
+        
+    
+
+    
+        
+
+     
+</div>
+
+
+
+                                      
+                    
+                    
+                    <div class="footer">
+    
+        <span> 
+            © 1949-2024 China 
+
+            
+                
+
+            
+        </span>
+       
+    
+</div>
+
+
+
+<!--这是指一条线往下的内容-->
+<div class="footer-last">
+    
+            <span>🌊看过大海的人不会忘记海的广阔🌊</span>
+            
+                <span class="footer-last-span-right"><i>本站由<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>驱动｜使用<a target="_blank" rel="noopener" href="https://github.com/HiNinoJay/hexo-theme-A4">Hexo-theme-A4</a>主题</i></span>
+            
+    
+</div>
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!--目录-->
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript" ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tocify/1.9.0/javascripts/jquery.tocify.min.js" type="text/javascript" ></script>
+        
+<script src="/js/toc.js"></script>
+
+    
+
+    
+<script src="/js/randomHeaderContent.js"></script>
+
+    <!--回到顶部按钮-->
+    
+        
+<script src="/js/returnToTop.js"></script>
+
+    
+
+    
+        
+<script src="/js/returnToLastPage.js"></script>
+
+    
+
+
+
+
+
+<script src="/js/lightgallery/lightgallery.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-thumbnail.umd.min.js"></script>
+
+
+
+<script src="/js/lightgallery/plugins/lg-fullscreen.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-autoplay.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-zoom.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-rotate.umd.min.js"></script>
+
+
+<script src="/js/lightgallery/plugins/lg-paper.umd.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+     
+    if (typeof lightGallery !== "undefined") {
+        var options1 = {
+            selector: '.gallery-item',
+            plugins: [lgThumbnail, lgFullscreen, lgAutoplay, lgZoom, lgRotate, lgPager], // 启用插件
+            thumbnail: true,          // 显示缩略图
+            zoom: true,               // 启用缩放功
+            rotate: true,             // 启用旋转功能能
+            autoplay: true,        // 启用自动播放功能
+            fullScreen: true,      // 启用全屏功能
+            pager: false, //页码,
+            zoomFromOrigin: true,   // 从原始位置缩放
+            actualSize: true,       // 启用查看实际大小的功能
+            enableZoomAfter: 300,    // 延迟缩放，确保图片加载完成后可缩放
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options1); // 修复选择器
+    }
+    
+</script>
+
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> 
+
+                </div>
+            
+            
+                <!-- 回到顶部的按钮-->  
+                <div class="progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+            
+                <!-- 返回的按钮-->  
+                <div class="return-to-last-progress-wrap shadow-drop-2-bottom">
+                    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+                </div>
+            
+    </body>
+</html>
