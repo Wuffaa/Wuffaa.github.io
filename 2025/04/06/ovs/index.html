@@ -4,7 +4,7 @@
     <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport" />
-    <meta name="description" content="dpdk" />
+    <meta name="description" content="ovs" />
     <meta name="hexo-theme-A4" content="v1.9.7" />
     <link rel="alternate icon" type="image/webp" href="/images/Neurothingy.jpg">
     <title>Wuffaa | Blog</title>
@@ -165,7 +165,7 @@
         
             
                 <div class="post-main-title" style="text-align: center;">
-                    dpdk
+                    ovs
                 </div>
             
         
@@ -206,11 +206,11 @@
     <div class="post-md">
         
             
-                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#OVS"><span class="post-toc-text">OVS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CLS-CLASSIFIER"><span class="post-toc-text">CLS(CLASSIFIER)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CLS-API"><span class="post-toc-text">CLS API</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CLS%E5%BA%94%E7%94%A8"><span class="post-toc-text">CLS应用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#route"><span class="post-toc-text">route</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#tunnel"><span class="post-toc-text">tunnel</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#openflow-table"><span class="post-toc-text">openflow table</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CLS%E5%8E%9F%E7%90%86"><span class="post-toc-text">CLS原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E6%8E%A9%E7%A0%81%E4%BC%98%E5%8C%96"><span class="post-toc-text">掩码优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%88%86%E6%AE%B5hash%E5%8C%B9%E9%85%8D"><span class="post-toc-text">分段hash匹配</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%89%8D%E7%BC%80%E5%9F%9F%E5%8C%B9%E9%85%8D"><span class="post-toc-text">前缀域匹配</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%EF%BC%88Binary-trie%EF%BC%89"><span class="post-toc-text">前置知识（Binary trie）</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%89%8D%E7%BC%80%E5%9F%9F"><span class="post-toc-text">自定义前缀域</span></a></li><li class="post-toc-item post-toc-level-6"><a class="post-toc-link" href="#%E5%86%85%E7%BD%AEl4-port%E5%89%8D%E7%BC%80%E5%9F%9F"><span class="post-toc-text">内置l4 port前缀域</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E8%A7%84%E5%88%99%E7%89%88%E6%9C%AC%E5%8F%B7%E6%8E%A7%E5%88%B6"><span class="post-toc-text">规则版本号控制</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#conjunction%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">conjunction实现</span></a></li></ol></li></ol></li></ol></li></ol>
+                <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CLS-CLASSIFIER"><span class="post-toc-text">CLS(CLASSIFIER)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CLS-API"><span class="post-toc-text">CLS API</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CLS%E5%BA%94%E7%94%A8"><span class="post-toc-text">CLS应用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#route"><span class="post-toc-text">route</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tunnel"><span class="post-toc-text">tunnel</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#openflow-table"><span class="post-toc-text">openflow table</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CLS%E5%8E%9F%E7%90%86"><span class="post-toc-text">CLS原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%8E%A9%E7%A0%81%E4%BC%98%E5%8C%96"><span class="post-toc-text">掩码优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%88%86%E6%AE%B5hash%E5%8C%B9%E9%85%8D"><span class="post-toc-text">分段hash匹配</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E5%89%8D%E7%BC%80%E5%9F%9F%E5%8C%B9%E9%85%8D"><span class="post-toc-text">前缀域匹配</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%EF%BC%88Binary-trie%EF%BC%89"><span class="post-toc-text">前置知识（Binary trie）</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%89%8D%E7%BC%80%E5%9F%9F"><span class="post-toc-text">自定义前缀域</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#%E5%86%85%E7%BD%AEl4-port%E5%89%8D%E7%BC%80%E5%9F%9F"><span class="post-toc-text">内置l4 port前缀域</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%84%E5%88%99%E7%89%88%E6%9C%AC%E5%8F%B7%E6%8E%A7%E5%88%B6"><span class="post-toc-text">规则版本号控制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#conjunction%E5%AE%9E%E7%8E%B0"><span class="post-toc-text">conjunction实现</span></a></li></ol></li></ol></li></ol>
             
         
-        <div class=".article-gallery"><h1 id="OVS"><a href="#OVS" class="headerlink" title="OVS"></a>OVS</h1><h2 id="CLS-CLASSIFIER"><a href="#CLS-CLASSIFIER" class="headerlink" title="CLS(CLASSIFIER)"></a>CLS(CLASSIFIER)</h2><p>slowpath的报文分类器，根据下发的规则，对输入flow进行匹配，返回命中的规则并设置该次匹配所感兴趣的掩码（如果有需要的话）。这个掩码为fastpath所用，fastpath会根据掩码下发并生成fastpath规则，使后面类似的流量（掩码后命中fastpath规则）进行快转。</p>
-<h3 id="CLS-API"><a href="#CLS-API" class="headerlink" title="CLS API"></a>CLS API</h3><p>cls初始化函数：</p>
+        <div class=".article-gallery"><h1 id="CLS-CLASSIFIER"><a href="#CLS-CLASSIFIER" class="headerlink" title="CLS(CLASSIFIER)"></a>CLS(CLASSIFIER)</h1><p>slowpath的报文分类器，根据下发的规则，对输入flow进行匹配，返回命中的规则并设置该次匹配所感兴趣的掩码（如果有需要的话）。这个掩码为fastpath所用，fastpath会根据掩码下发并生成fastpath规则，使后面类似的流量（掩码后命中fastpath规则）进行快转。</p>
+<h2 id="CLS-API"><a href="#CLS-API" class="headerlink" title="CLS API"></a>CLS API</h2><p>cls初始化函数：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">classifier_init</span><span class="params">(<span class="keyword">struct</span> classifier *, <span class="type">const</span> <span class="type">uint8_t</span> *flow_segments)</span>;</span><br></pre></td></tr></table></figure>
 
 <p>flow_segments为一个数组，每个元素表示分段点在flow中的偏移（8字节为一个单位），数组最后一个元素的值一定是整个flow的大小（8字节为一个单位）。</p>
@@ -229,7 +229,7 @@
 
 
 
-<h3 id="CLS应用"><a href="#CLS应用" class="headerlink" title="CLS应用"></a>CLS应用</h3><h4 id="route"><a href="#route" class="headerlink" title="route"></a>route</h4><h4 id="tunnel"><a href="#tunnel" class="headerlink" title="tunnel"></a>tunnel</h4><h4 id="openflow-table"><a href="#openflow-table" class="headerlink" title="openflow table"></a>openflow table</h4><h3 id="CLS原理"><a href="#CLS原理" class="headerlink" title="CLS原理"></a>CLS原理</h3><p>cls主要是利用hash表来进行规则的插入和查找。</p>
+<h2 id="CLS应用"><a href="#CLS应用" class="headerlink" title="CLS应用"></a>CLS应用</h2><h3 id="route"><a href="#route" class="headerlink" title="route"></a>route</h3><h3 id="tunnel"><a href="#tunnel" class="headerlink" title="tunnel"></a>tunnel</h3><h3 id="openflow-table"><a href="#openflow-table" class="headerlink" title="openflow table"></a>openflow table</h3><h2 id="CLS原理"><a href="#CLS原理" class="headerlink" title="CLS原理"></a>CLS原理</h2><p>cls主要是利用hash表来进行规则的插入和查找。</p>
 <p><strong>cls规则分为三部分组成</strong>：</p>
 <ul>
 <li>cls_flow：记录规则匹配的内容</li>
@@ -263,8 +263,8 @@
 <li>跳到第二步，直到没有可访问的subtable为止</li>
 <li>此时所记录的cls规则为最终所命中的cls规则</li>
 </ul>
-<h4 id="掩码优化"><a href="#掩码优化" class="headerlink" title="掩码优化"></a>掩码优化</h4><p>主要用于规则匹配失败时wc掩码的设置（基于subtable的，因为该flow可能在某个低优先级的subtable中命中，而在比他高优先级的subtable中未命中）。</p>
-<h5 id="分段hash匹配"><a href="#分段hash匹配" class="headerlink" title="分段hash匹配"></a>分段hash匹配</h5><p>根据flow结构体的成员分布，将flow分为4段：</p>
+<h3 id="掩码优化"><a href="#掩码优化" class="headerlink" title="掩码优化"></a>掩码优化</h3><p>主要用于规则匹配失败时wc掩码的设置（基于subtable的，因为该flow可能在某个低优先级的subtable中命中，而在比他高优先级的subtable中未命中）。</p>
+<h4 id="分段hash匹配"><a href="#分段hash匹配" class="headerlink" title="分段hash匹配"></a>分段hash匹配</h4><p>根据flow结构体的成员分布，将flow分为4段：</p>
 <ul>
 <li>Metadata数据段</li>
 <li>L2数据段</li>
@@ -287,7 +287,7 @@
 </ul>
 </li>
 </ul>
-<h5 id="前缀域匹配"><a href="#前缀域匹配" class="headerlink" title="前缀域匹配"></a>前缀域匹配</h5><h6 id="前置知识（Binary-trie）"><a href="#前置知识（Binary-trie）" class="headerlink" title="前置知识（Binary trie）"></a>前置知识（Binary trie）</h6><p>前缀二叉树，一种用于快速检索的二叉树结构，其基本性质如下：</p>
+<h4 id="前缀域匹配"><a href="#前缀域匹配" class="headerlink" title="前缀域匹配"></a>前缀域匹配</h4><h5 id="前置知识（Binary-trie）"><a href="#前置知识（Binary-trie）" class="headerlink" title="前置知识（Binary trie）"></a>前置知识（Binary trie）</h5><p>前缀二叉树，一种用于快速检索的二叉树结构，其基本性质如下：</p>
 <ul>
 <li>节点存储最多32位的前缀信息和该节点可命中的规则数</li>
 <li>节点指向左孩子的边代表下一个节点的前缀信息的最高位为0，指向右孩子的边代表下一个节点的前缀信息的最高位为1</li>
@@ -312,7 +312,7 @@
 </tbody></table>
 <p>构建的binary trie如下：</p>
 <p><a href="/images/binary_trie.svg" title="binary_trie" class="gallery-item" style="box-shadow: none;"> <img src="/images/binary_trie.svg" alt="binary_trie"></a></p>
-<h6 id="自定义前缀域"><a href="#自定义前缀域" class="headerlink" title="自定义前缀域"></a>自定义前缀域</h6><p>通过API来设置cls的trie，在规则匹配时用于生成匹配失败的wc。</p>
+<h5 id="自定义前缀域"><a href="#自定义前缀域" class="headerlink" title="自定义前缀域"></a>自定义前缀域</h5><p>通过API来设置cls的trie，在规则匹配时用于生成匹配失败的wc。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//cls自定义前缀域设置，这些前缀域可以使得匹配后所生成的掩码更小，保证了所下发的fastpath规则尽可能的聚合。</span></span><br><span class="line"><span class="type">bool</span> <span class="title function_">classifier_set_prefix_fields</span><span class="params">(<span class="keyword">struct</span> classifier *,</span></span><br><span class="line"><span class="params">                                  <span class="type">const</span> <span class="keyword">enum</span> mf_field_id *trie_fields,</span></span><br><span class="line"><span class="params">                                  <span class="type">unsigned</span> <span class="type">int</span> n_trie_fields)</span>;</span><br></pre></td></tr></table></figure>
 
 <p>trie是基于cls的，每个trie对应一个meta-flow field，目前最多支持4个trie，一般为<code>ipv4_src、ipv4_dst、ipv6_src、ipv6_dst</code>。</p>
@@ -360,7 +360,7 @@
 <blockquote>
 <p>个人认为，当trie若未命中该subtable中的规则时，直接对wc设置该subtable对该trie的前缀长度，并跳过该subtable的规则匹配。maskbits不再需要。</p>
 </blockquote>
-<h6 id="内置l4-port前缀域"><a href="#内置l4-port前缀域" class="headerlink" title="内置l4 port前缀域"></a>内置l4 port前缀域</h6><p>与优化2类似，使用trie构建，因为port的前缀掩码可能不连续，因此在插入和匹配时与掩码相与，保证trie的正确性。l4 port的前缀长度为<strong>MSB</strong>到<strong>LSB 1</strong>之间长度（0b001000的前缀长度为3）</p>
+<h5 id="内置l4-port前缀域"><a href="#内置l4-port前缀域" class="headerlink" title="内置l4 port前缀域"></a>内置l4 port前缀域</h5><p>与优化2类似，使用trie构建，因为port的前缀掩码可能不连续，因此在插入和匹配时与掩码相与，保证trie的正确性。l4 port的前缀长度为<strong>MSB</strong>到<strong>LSB 1</strong>之间长度（0b001000的前缀长度为3）</p>
 <p>该port_trie是基于subtable的。在subtable中，对该flow进行全量匹配后，仍未命中规则，则对该port_trie进行查找，根据查找结果确定<code>port_mask</code>，并将其设置到wc的l4 port前缀域中。</p>
 <p><strong>规则插入时对port_trie的操作</strong>：</p>
 <ul>
@@ -372,14 +372,14 @@
 <li>当subtable对该flow进行全量匹配且未命中后，提取flow的port信息（<code>[port_src, port_dst] &amp; subtable_mask</code>），在port_trie中进行查找，并返回匹配长度（这个匹配长度跟trie_ctx中的<code>maskbits</code>一个含义）</li>
 <li>将这个长度作为前缀掩码长度，并设置到wc的l4 port中</li>
 </ul>
-<h4 id="规则版本号控制"><a href="#规则版本号控制" class="headerlink" title="规则版本号控制"></a>规则版本号控制</h4><p>版本号可控制cls中的cls规则是否对用户可见，在cls规则插入和cls规则匹配时，都会带有当前版本号信息。版本号的控制是以cls规则为单位的，因此可以通过API对特定的规则的版本号进行控制。</p>
+<h3 id="规则版本号控制"><a href="#规则版本号控制" class="headerlink" title="规则版本号控制"></a>规则版本号控制</h3><p>版本号可控制cls中的cls规则是否对用户可见，在cls规则插入和cls规则匹配时，都会带有当前版本号信息。版本号的控制是以cls规则为单位的，因此可以通过API对特定的规则的版本号进行控制。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">versions</span> &#123;</span></span><br><span class="line">    <span class="type">ovs_version_t</span> add_version;              <span class="comment">/* Version object was added in. */</span></span><br><span class="line">    ATOMIC(<span class="type">ovs_version_t</span>) remove_version;   <span class="comment">/* Version object is removed in. */</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Makes &#x27;rule&#x27; invisible in &#x27;remove_version&#x27;.  Once that version is used in</span></span><br><span class="line"><span class="comment"> * lookups, the caller should remove &#x27;rule&#x27; via ovsrcu_postpone().</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &#x27;rule&#x27; must be in a classifier.</span></span><br><span class="line"><span class="comment"> * This may only be called by the exclusive writer. */</span></span><br><span class="line"><span class="type">void</span></span><br><span class="line"><span class="title function_">cls_rule_make_invisible_in_version</span><span class="params">(<span class="type">const</span> <span class="keyword">struct</span> cls_rule *rule,</span></span><br><span class="line"><span class="params">                                   <span class="type">ovs_version_t</span> remove_version)</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* This undoes the change made by cls_rule_make_invisible_in_version().</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * &#x27;rule&#x27; must be in a classifier.</span></span><br><span class="line"><span class="comment"> * This may only be called by the exclusive writer. */</span></span><br><span class="line"><span class="type">void</span></span><br><span class="line"><span class="title function_">cls_rule_restore_visibility</span><span class="params">(<span class="type">const</span> <span class="keyword">struct</span> cls_rule *rule)</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">bool</span></span><br><span class="line"><span class="title function_">cls_rule_visible_in_version</span><span class="params">(<span class="type">const</span> <span class="keyword">struct</span> cls_rule *rule, <span class="type">ovs_version_t</span> version)</span>;</span><br></pre></td></tr></table></figure>
 
 
 
 <p>在规则插入时，<code>add_version</code>和<code>remove_version</code>相等，当插入完成后，<code>remove_version</code>设置为<code>OVS_VERSION_NOT_REMOVED</code>（ovs_version_t的最大值）。</p>
 <p>在规则查找时会指定当前的版本号，只有<code>add_version &lt;= cur_version &lt; remove_version</code>的版本号才对调用者可见。</p>
-<h4 id="conjunction实现"><a href="#conjunction实现" class="headerlink" title="conjunction实现"></a>conjunction实现</h4><p>略</p>
+<h3 id="conjunction实现"><a href="#conjunction实现" class="headerlink" title="conjunction实现"></a>conjunction实现</h3><p>略</p>
 </div>
     </div>
 
